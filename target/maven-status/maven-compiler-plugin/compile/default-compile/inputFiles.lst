@@ -1,4 +1,9 @@
+/home/leonardo/eclipse-workspace/contactura/src/main/java/contactura/repository/ContacturaUserRepository.java
 /home/leonardo/eclipse-workspace/contactura/src/main/java/contactura/ContacturaApplication.java
+/home/leonardo/eclipse-workspace/contactura/src/main/java/contactura/config/SecurityConfig.java
+/home/leonardo/eclipse-workspace/contactura/src/main/java/contactura/controller/ContacturaUserController.java
+/home/leonardo/eclipse-workspace/contactura/src/main/java/contactura/PasswordEnconder.java
 /home/leonardo/eclipse-workspace/contactura/src/main/java/contactura/controller/ContacturaController.java
 /home/leonardo/eclipse-workspace/contactura/src/main/java/contactura/repository/ContacturaRepository.java
 /home/leonardo/eclipse-workspace/contactura/src/main/java/contactura/model/Contactura.java
+/home/leonardo/eclipse-workspace/contactura/src/main/java/contactura/model/ContacturaUser.java
