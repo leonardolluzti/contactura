@@ -1,4 +1,5 @@
 /home/leonardo/eclipse-workspace/contactura/src/main/java/contactura/repository/ContacturaUserRepository.java
+/home/leonardo/eclipse-workspace/contactura/src/main/java/contactura/service/CustomUserDetailService.java
 /home/leonardo/eclipse-workspace/contactura/src/main/java/contactura/ContacturaApplication.java
 /home/leonardo/eclipse-workspace/contactura/src/main/java/contactura/config/SecurityConfig.java
 /home/leonardo/eclipse-workspace/contactura/src/main/java/contactura/controller/ContacturaUserController.java
