@@ -9,9 +9,13 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 
+//Criação de construtores padrões
 @AllArgsConstructor
+//Cria o construtor
 @NoArgsConstructor
+//Cria nossos gets e sets, assim como nossos hashcodes, etc 
 @Data
+//Definir quando uma classe é uma entidade espelho do banco de dados
 @Entity
 public class ContacturaUser {
 	@Id

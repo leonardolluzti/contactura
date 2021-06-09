@@ -15,7 +15,7 @@ public class ContacturaApplication {
 	public static void main(String[] args) {
 		SpringApplication.run(ContacturaApplication.class, args);
 	}
-	@Bean
+/*	@Bean
 	CommandLineRunner init(ContacturaRepository repository){
 		return args -> {
 			LongStream.range(1, 10)
@@ -29,5 +29,5 @@ public class ContacturaApplication {
 			.forEach(System.out::println);
 		};
 	}
-
+*/
 }
