@@ -3,6 +3,7 @@ package contactura.controller;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -24,8 +25,8 @@ public class ContacturaController {
 
 //Lista todos os contatos - http://localhost:8089/contactura
 	@GetMapping
-	public List<Contactura> findAll(){
-		return (List<Contactura>) repository.findAll();
+	public List findAll(){
+		return repository.findAll();
 	}
 
 //Pesquisar pelo ID - http://localhost:8089/contactura/{id}
@@ -44,7 +45,7 @@ public class ContacturaController {
 
 // Atualiza o contato - http://localhost:8089/contactura/10
 	@PutMapping(value = "{id}")
-	public ResponseEntity<Contactura> update(@PathVariable long id, @RequestBody Contactura contactura){
+	public ResponseEntity<?> update(@PathVariable long id, @RequestBody Contactura contactura){
 		return repository.findById(id)
 				.map(record ->{
 					record.setName(contactura.getName());
@@ -55,13 +56,14 @@ public class ContacturaController {
 				}).orElse(ResponseEntity.notFound().build());
 	}
 
-// Deletar contato - http://localhost:8089/contactura/
-	@DeleteMapping(path = "{/id}")
+// Deletar contato - http://localhost:8089/contactura/{id}
+	@DeleteMapping(path = "{id}")
+	@PreAuthorize("hasRole('ADMIN')")
 	public ResponseEntity<?> delete(@PathVariable long id){
 		return repository.findById(id)
 				.map(record -> {
 					repository.deleteById(id);
-					return ResponseEntity.ok().build();
+					return ResponseEntity.ok().body("Deletado com Sucesso");
 					
 				}).orElse(ResponseEntity.notFound().build());
 
