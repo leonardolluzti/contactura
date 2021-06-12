@@ -1,8 +1,10 @@
 package contactura.repository;
 
-import org.springframework.data.repository.CrudRepository;
+import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.stereotype.Repository;
 import contactura.model.Contactura;
 
-public interface ContacturaRepository extends CrudRepository<Contactura, Long>{
+@Repository
+public interface ContacturaRepository extends JpaRepository<Contactura, Long>{
 
 }

@@ -1,10 +1,9 @@
 package contactura.controller;
 
-import java.security.Principal;
 import java.util.List;
-import java.util.Random;
 
 import javax.servlet.http.HttpServletRequest;
+
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
@@ -31,19 +30,15 @@ public class ContacturaUserController {
 	private ContacturaUserRepository repository;
 	
 	@RequestMapping("/login")
-	@PostMapping
+	@GetMapping
 	public String login(HttpServletRequest request){
 		String token = request.getHeader("Authorization")
 				.substring("Basic".length()).trim();
-		return token;
-		//return ResponseEntity.ok().body("Usuário Logado com Sucesso!\nToken: " + token);
-		//return () -> new String(Base64.getDecoder()
-		//		.decode(token)).split(":")[1];
+		return token;		
 	}
 	
 	//Lista todos os usuários
 	@GetMapping
-
 	public List findAll() {
 		return repository.findAll();
 	}
@@ -73,22 +68,22 @@ public class ContacturaUserController {
 					record.setName(user.getName());
 					record.setUsername(user.getUsername());
 					record.setPassword(criptografarSenha(user.getPassword()));
-					record.setAdmin(false);
+					record.setAdmin(user.isAdmin());
 					ContacturaUser update = repository.save(record);
 					return ResponseEntity.ok().body(update);					
 				}).orElse(ResponseEntity.notFound().build());
 	}
 	
-	//Deletar usuário
-	@DeleteMapping(path = {"/{id}"})
-	@PreAuthorize("hasRole('ADMIN')")
-	public ResponseEntity<?> delete(@PathVariable long id){
-		return repository.findById(id)
-				.map(record -> {
-					repository.deleteById(id);
-					return ResponseEntity.ok().body("Deletado com sucesso!");	
-				}).orElse(ResponseEntity.notFound().build());
-	}
+	//Deletar Usuário
+		@DeleteMapping(path = "{id}")
+		@PreAuthorize("hasRole('ADMIN')")
+		public ResponseEntity<?> delete(@PathVariable long id){			
+			return repository.findById(id)
+					.map(record -> {
+						repository.deleteById(id);
+						return ResponseEntity.ok().body("Deletado com Sucesso!");
+					}).orElse(ResponseEntity.notFound().build());			
+		}
 
 	// Criptografar Senha
 	private String criptografarSenha(String password) {

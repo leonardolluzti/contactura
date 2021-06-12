@@ -1,13 +1,15 @@
 package contactura;
 
-import java.util.stream.LongStream;
-
-import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+
+/* Só quando usar o Bean para popular o banco.
+import java.util.stream.LongStream;
+import org.springframework.boot.CommandLineRunner;
 import org.springframework.context.annotation.Bean;
 import contactura.model.Contactura;
 import contactura.repository.ContacturaRepository;
+*/
 
 @SpringBootApplication
 public class ContacturaApplication {
